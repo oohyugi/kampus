@@ -20,7 +20,7 @@ app.get("/kampus/:page", (req, res, next) => {
 
 });
 
-app.get("/kampus/all", (req, res, next) => {
+app.get("/kampus", (req, res, next) => {
 
 	var listKampus=JSON.parse(rawdata);
  	res.json(listKampus);
