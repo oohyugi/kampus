@@ -23,6 +23,18 @@ app.get("/kampus/:page", (req, res, next) => {
 app.get("/kampus", (req, res, next) => {
 
 	var listKampus=JSON.parse(rawdata);
+	// var slimList = []
+	// listKampus.forEach(element => {
+	// 	slimList.push(
+	// 		{
+	// 			"id":element['kodeProdi'],
+	// 			"universitas_id":element['kodeUniversitas'],
+	// 			"name":element['prodiForlap'],
+	// 			"akredetasi":element['akreditasi'],
+	// 			"jenjang":element['jenjang']
+	// 		})
+		
+	// });
  	res.json(listKampus);
 
 });
@@ -47,4 +59,9 @@ app.get("/prodi/:id", (req, res, next) => {
 function paginate(array, page_size, page_number) {
  
   return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+function uniq(a, param){
+	return a.filter(function(item, pos, array){
+		return array.map(function(mapItem){ return mapItem[param]; }).indexOf(item[param]) === pos;
+	})
 }
